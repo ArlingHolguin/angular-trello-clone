@@ -1,11 +1,14 @@
+import { Card } from "./card.model";
 import { Colors } from "./colors.model";
+import { List } from "./list.model";
 import { User } from "./user.model";
 
 export interface Board {
-    id: number;
+    id: string;
     title: string;
     backgroundColor: Colors;
     members: User[];
-    creationAt: string;
-    updatedAt: string;
+
+    lists: List[];
+    cards: Card[];
 }
