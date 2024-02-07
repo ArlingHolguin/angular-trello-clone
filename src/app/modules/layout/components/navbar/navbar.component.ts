@@ -4,7 +4,8 @@ import {
   faBell,
   faInfoCircle,
   faClose,
-  faAngleDown
+  faAngleDown,
+  faPlus
 } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '@services/auth.service';
@@ -18,9 +19,11 @@ export class NavbarComponent {
   faInfoCircle = faInfoCircle;
   faClose = faClose;
   faAngleDown = faAngleDown;
+  faPlus = faPlus;
 
   isOpenOverlayAvatar = false;
   isOpenOverlayBoards = false;
+  isOpenOverlayCreateBoard = false;
 
   user$ = this.authService.user$;
 

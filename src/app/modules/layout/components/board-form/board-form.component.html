@@ -1,0 +1,158 @@
+<form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doSave()">
+  <div>
+    <div class="relative">
+      <input
+        #nameInput
+        formControlName="title"
+        placeholder="Enter title"
+        type="text"
+        class="w-full rounded bg-gray-100 border-gray-300 border-2"
+      />
+    </div>
+    <div *ngIf="form.controls.title.touched && form.controls.title.invalid">
+      <p
+        *ngIf="form.controls.title.hasError('required')"
+        class="font-medium text-red-500 text-xs mt-1 ml-1"
+      >
+        This field is mandatory
+      </p>
+      <p
+        *ngIf="form.controls.title.hasError('title')"
+        class="font-medium text-red-500 text-xs mt-1 ml-1"
+      >
+        This field should be a title
+      </p>
+    </div>
+  </div>
+  <div class="flex items-center justify-between">
+      <!-- yellow-radio  -->
+      <div>
+         <div class="relative">
+             <input
+               id="yellow-radio"
+               type="radio"
+               value="yellow"
+               name="backgroundColor"
+               formControlName="backgroundColor"
+               class="hidden peer"
+             />
+             <label
+               for="yellow-radio"
+               class="inline-flex items-center justify-center w-8 h-8 text-transparent border border-gray-200 rounded cursor-pointer bg-yellow-700 hover:bg-yellow-500 peer-checked:text-white"
+               >
+               <fa-icon [icon]="faCheck"></fa-icon>
+             </label>
+             
+         </div>
+       </div>
+      <!-- sky-radio  -->
+       <div>
+         <div class="relative">
+             <input
+               id="sky-radio"
+               type="radio"
+               value="sky"
+               name="backgroundColor"
+               formControlName="backgroundColor"
+               class="hidden peer"
+             />
+             <label
+               for="sky-radio"
+               class="inline-flex items-center justify-center w-8 h-8 text-transparent border border-gray-200 rounded cursor-pointer bg-sky-700 hover:bg-sky-500 peer-checked:text-white"
+               >
+               <fa-icon [icon]="faCheck"></fa-icon>
+             </label>
+             
+         </div>
+       </div> 
+      
+       <!-- red-radio  -->
+       <div>
+         <div class="relative">
+             <input
+               id="red-radio"
+               type="radio"
+               value="red"
+               name="backgroundColor"
+               formControlName="backgroundColor"
+               class="hidden peer"
+             />
+             <label
+               for="red-radio"
+               class="inline-flex items-center justify-center w-8 h-8 text-transparent border border-gray-200 rounded cursor-pointer bg-red-700 hover:bg-red-500 peer-checked:text-white"
+               >
+               <fa-icon [icon]="faCheck"></fa-icon>
+             </label>
+             
+         </div>
+       </div>
+
+       <!-- violet-radio  -->
+       <div>
+        <div class="relative">
+            <input
+              id="violet-radio"
+              type="radio"
+              value="violet"
+              name="backgroundColor"
+              formControlName="backgroundColor"
+              class="hidden peer"
+            />
+            <label
+              for="violet-radio"
+              class="inline-flex items-center justify-center w-8 h-8 text-transparent border border-gray-200 rounded cursor-pointer bg-violet-700 hover:bg-violet-500 peer-checked:text-white"
+              >
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </label>
+            
+        </div>
+      </div>
+
+      <!-- green-radio  -->
+       <div>
+        <div class="relative">
+            <input
+              id="green-radio"
+              type="radio"
+              value="green"
+              name="backgroundColor"
+              formControlName="backgroundColor"
+              class="hidden peer"
+            />
+            <label
+              for="green-radio"
+              class="inline-flex items-center justify-center w-8 h-8 text-transparent border border-gray-200 rounded cursor-pointer bg-green-700 hover:bg-green-500 peer-checked:text-white"
+              >
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </label>
+            
+        </div>
+      </div>
+
+       <!-- gray-radio  -->
+       <div>
+        <div class="relative">
+            <input
+              id="gray-radio"
+              type="radio"
+              value="gray"
+              name="backgroundColor"
+              formControlName="backgroundColor"
+              class="hidden peer"
+            />
+            <label
+              for="gray-radio"
+              class="inline-flex items-center justify-center w-8 h-8 text-transparent border border-gray-200 rounded cursor-pointer bg-gray-700 hover:bg-gray-500 peer-checked:text-white"
+              >
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </label>
+            
+        </div>
+      </div>   
+
+
+  </div>
+  <div>
+    <app-btn typeBtn="submit" color="success">Create</app-btn>
+  </div>
+</form>
