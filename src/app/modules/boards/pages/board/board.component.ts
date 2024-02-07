@@ -16,6 +16,7 @@ import { Card } from '@models/card.model';
 import { CardsService } from '@services/cards.service';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { List } from '@models/list.model';
+import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-board',
@@ -36,6 +37,12 @@ export class BoardComponent implements OnInit{
   board: Board | null = null;
   faPlus = faPlus;
   showCardForm = false;
+  inputCard = new FormControl<string>('',{
+    nonNullable: true,
+    validators: [Validators.required]
+
+})
+
   
 
   constructor( 
@@ -133,6 +140,18 @@ export class BoardComponent implements OnInit{
       })
 
     }
+
+  }
+
+  
+  createCard(){
+    const title = this.inputCard.value;
+    console.log(title);
+    
+  }
+
+  closeCardForm(list: List){
+    list.showCardForm = false;
 
   }
 }

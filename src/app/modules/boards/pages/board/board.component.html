@@ -19,12 +19,18 @@
         <div class="mt-5">
           <app-btn *ngIf="!list.showCardForm" color="sky" (click)="openFormCard(list)" >
             <fa-icon [icon]="faPlus"></fa-icon>
-            Add board
+            Add card
           </app-btn>
           <!-- Formulario  -->
           <div>
-            <form *ngIf="list.showCardForm" action="">
-              <div>For</div>
+            <form *ngIf="list.showCardForm" >
+              <div class="w-full" >
+                <textarea [formControl]="inputCard" class="w-full rounded"></textarea>
+                <div class="flex justify-between">
+                  <app-btn color="primary" (click)="createCard()">Create</app-btn>
+                  <app-btn color="gray" (click)="closeCardForm(list)">Cancel</app-btn>
+                </div>
+              </div>
             </form>
           </div>
         </div>
