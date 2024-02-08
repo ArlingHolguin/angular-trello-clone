@@ -18,6 +18,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { List } from '@models/list.model';
 import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ListsService } from '@services/lists.service';
+import { BACKGROUNDS } from '@models/colors.model';
 
 @Component({
   selector: 'app-board',
@@ -38,6 +39,7 @@ export class BoardComponent implements OnInit{
   board: Board | null = null;
   faPlus = faPlus;
   showCardForm = false;
+  colorsBackground = BACKGROUNDS;
 
   inputCard = new FormControl<string>('', {
     nonNullable: true,
@@ -192,5 +194,13 @@ export class BoardComponent implements OnInit{
   closeCardForm(list: List){
     list.showCardForm = false;
 
+  }
+
+  get colors(){
+    if(this.board){
+      const classes  = this.colorsBackground[this.board.backgroundColor];
+      return classes ? classes : {};
+    }
+    return {}
   }
 }
