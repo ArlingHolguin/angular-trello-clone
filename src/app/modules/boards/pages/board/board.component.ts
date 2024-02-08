@@ -17,6 +17,7 @@ import { CardsService } from '@services/cards.service';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { List } from '@models/list.model';
 import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { ListsService } from '@services/lists.service';
 
 @Component({
   selector: 'app-board',
@@ -37,11 +38,19 @@ export class BoardComponent implements OnInit{
   board: Board | null = null;
   faPlus = faPlus;
   showCardForm = false;
-  inputCard = new FormControl<string>('',{
+
+  inputCard = new FormControl<string>('', {
     nonNullable: true,
     validators: [Validators.required]
 
-})
+  })
+
+  showListForm = false;
+  inputList = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [Validators.required]
+
+  })
 
   
 
@@ -49,7 +58,8 @@ export class BoardComponent implements OnInit{
     private dialog: Dialog,
     private route: ActivatedRoute,
     private boardsService: BoardsService,
-    private cardsService: CardsService
+    private cardsService: CardsService,
+    private listService: ListsService
 
     ) {}
 
@@ -88,11 +98,26 @@ export class BoardComponent implements OnInit{
 
   }
 
-  addColumn() {
-    // this.columns.push({
-    //   title: 'New Column',
-    //   todos: [],
-    // });
+  addList() {
+    const title = this.inputList.value;
+    if(this.board){
+      this.listService.create({
+        title,
+        boardId: this.board.id,
+        position: this.boardsService.getPositionNewItem(this.board.lists)
+      }).subscribe(
+        list =>{
+          this.board?.lists.push({
+            ...list,
+            cards: []
+          });
+          this.inputList.setValue('');
+          this.showListForm = false;
+        }
+      )
+      
+
+    }
   }
 
   openDialog(card: Card) {
@@ -151,7 +176,7 @@ export class BoardComponent implements OnInit{
       title,
       listId: list.id,
       boardId: this.board.id,
-      position: this.boardsService.getPositionNewCard(list.cards)
+      position: this.boardsService.getPositionNewItem(list.cards)
     }).subscribe(
       card =>{
         list.cards.push(card);
