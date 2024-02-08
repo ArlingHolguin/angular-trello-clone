@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnInit, OnDestroy} from '@angular/core';
 
 import {
   CdkDragDrop,
@@ -34,7 +34,7 @@ import { BACKGROUNDS } from '@models/colors.model';
     `,
   ],
 })
-export class BoardComponent implements OnInit{
+export class BoardComponent implements OnInit, OnDestroy{
 
   board: Board | null = null;
   faPlus = faPlus;
@@ -72,6 +72,10 @@ export class BoardComponent implements OnInit{
         this.getBoard(id);
       }
     });
+  }
+
+  ngOnDestroy():void{
+    this.boardsService.setBackgroundColor('sky');
   }
 
   drop(event: CdkDragDrop<Card[]>) {
@@ -140,6 +144,7 @@ export class BoardComponent implements OnInit{
   getBoard(id: string) {
     this.boardsService.getBoard(id).subscribe((board) => {
       this.board = board;
+      this.boardsService.setBackgroundColor(board.backgroundColor);
     })
   }
 
@@ -169,7 +174,6 @@ export class BoardComponent implements OnInit{
     }
 
   }
-
   
   createCard(list: List){
     const title = this.inputCard.value;

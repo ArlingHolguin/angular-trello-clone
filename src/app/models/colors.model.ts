@@ -68,37 +68,74 @@ export const COLORS: ObjectColors = {
 
 export const BACKGROUNDS: ObjectColors = {
   success: {
-    'bg-success-400': true,
+    'bg-success-500': true,
   },
   primary: {
-    'bg-primary-400': true,
+    'bg-primary-500': true,
   },
   danger: {
-    'bg-danger-400': true,
+    'bg-danger-500': true,
   },
   light: {
     'bg-gray-200': true,
   },
   sky: {
-    'bg-sky-400': true,
+    'bg-sky-500': true,
   },
   yellow:{
-    'bg-yellow-400': true,
+    'bg-yellow-500': true,
   },
   green:{
-    'bg-green-400': true,
+    'bg-green-500': true,
   },
   gray:{
-    'bg-gray-400': true,
+    'bg-gray-500': true,
   },
   purple:{
-    'bg-purple-400': true,
+    'bg-purple-500': true,
   },
   red:{
-    'bg-red-400': true,
+    'bg-red-500': true,
   },
   violet:{
-    'bg-violet-400': true,
+    'bg-violet-500': true,
+  }
+
+}
+
+export const NAVBACKGROUNDS: ObjectColors = {
+  success: {
+    'bg-success-700': true,
+  },
+  primary: {
+    'bg-primary-700': true,
+  },
+  danger: {
+    'bg-danger-700': true,
+  },
+  light: {
+    'bg-gray-200': true,
+  },
+  sky: {
+    'bg-sky-700': true,
+  },
+  yellow:{
+    'bg-yellow-700': true,
+  },
+  green:{
+    'bg-green-700': true,
+  },
+  gray:{
+    'bg-gray-700': true,
+  },
+  purple:{
+    'bg-purple-700': true,
+  },
+  red:{
+    'bg-red-700': true,
+  },
+  violet:{
+    'bg-violet-700': true,
   }
 
 }
